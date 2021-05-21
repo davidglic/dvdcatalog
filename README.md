@@ -43,11 +43,22 @@ https://medium.com/weekly-webtips/how-to-create-a-simple-login-functionality-in-
 
 # Wireframes and Models
 
+Landing Page
 ![landing page](https://user-images.githubusercontent.com/82845270/119192428-01bb0980-ba35-11eb-9f45-7b7c1c2a0a46.png)
+
+List Page
 ![list page](https://user-images.githubusercontent.com/82845270/119192442-067fbd80-ba35-11eb-9098-9d1ca1f7ee79.png)
+
+Card Page
 ![card page](https://user-images.githubusercontent.com/82845270/119192450-097aae00-ba35-11eb-921b-65d92555e63f.png)
+
+New/Edit/Delete Page
 ![new and edit page](https://user-images.githubusercontent.com/82845270/119192455-0c759e80-ba35-11eb-9c7c-f484e70e0e3a.png)
+
+Storage Locations Page
 ![location list page](https://user-images.githubusercontent.com/82845270/119192475-13041600-ba35-11eb-9f50-8f803e79d67d.png)
+
+Database Model
 ![database model](https://user-images.githubusercontent.com/82845270/119192485-16979d00-ba35-11eb-91de-addd6b1c7fde.png)
 
 
