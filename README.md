@@ -21,7 +21,7 @@ I own too many DVD's to remember what I actually own or don't own. This project 
 
 load page and show a list of Titles, IMDB ID's, and location
 
-##Next steps
+## Next steps
 
 - add login w/ persistent session
 https://medium.com/weekly-webtips/how-to-create-a-simple-login-functionality-in-express-5274c44c20df
@@ -43,22 +43,22 @@ https://medium.com/weekly-webtips/how-to-create-a-simple-login-functionality-in-
 
 # Wireframes and Models
 
-Landing Page
+Landing Page<br/>
 ![landing page](https://user-images.githubusercontent.com/82845270/119192428-01bb0980-ba35-11eb-9f45-7b7c1c2a0a46.png)
 
-List Page
+List Page<br/>
 ![list page](https://user-images.githubusercontent.com/82845270/119192442-067fbd80-ba35-11eb-9098-9d1ca1f7ee79.png)
 
-Card Page
+Card Page<br/>
 ![card page](https://user-images.githubusercontent.com/82845270/119192450-097aae00-ba35-11eb-921b-65d92555e63f.png)
 
-New/Edit/Delete Page
+New/Edit/Delete Page<br/>
 ![new and edit page](https://user-images.githubusercontent.com/82845270/119192455-0c759e80-ba35-11eb-9c7c-f484e70e0e3a.png)
 
-Storage Locations Page
+Storage Locations Page<br/>
 ![location list page](https://user-images.githubusercontent.com/82845270/119192475-13041600-ba35-11eb-9f50-8f803e79d67d.png)
 
-Database Model
+Database Model<br/>
 ![database model](https://user-images.githubusercontent.com/82845270/119192485-16979d00-ba35-11eb-91de-addd6b1c7fde.png)
 
 
