@@ -1,9 +1,9 @@
 # dvdcatalog
-##DVD Library Card Catalog
+## DVD Library Card Catalog
 
 I own too many DVD's to remember what I actually own or don't own. This project simulates a library card catalog so I can check on the go. It also records where I store my indivdual DVDs so I know were to look for them.
 
-##User Stories
+## User Stories
 
 - John Doe logs into app to see his movies.
 - John can view titles by all or first letter of title.
@@ -17,7 +17,7 @@ I own too many DVD's to remember what I actually own or don't own. This project 
 - Jane will see a message on catalog card if IMDB ID is unavailable or invalid.
 
 
-##MVP 
+## MVP 
 
 load page and show a list of Titles, IMDB ID's, and location
 
@@ -32,7 +32,7 @@ https://medium.com/weekly-webtips/how-to-create-a-simple-login-functionality-in-
 - edit/delete page
 - skeletal styling--just put DOM things in their places/placeholders.
 
-##Then
+## Then
 - Implement API to populate card
 - error on card display if api fails.
 - add sidebar nav options to list by all, a,b,c... or location
@@ -41,7 +41,8 @@ https://medium.com/weekly-webtips/how-to-create-a-simple-login-functionality-in-
 - fancy styling
 - set up for mobile and desktop.
 
-#Wireframes and Models
+# Wireframes and Models
+
 ![landing page](https://user-images.githubusercontent.com/82845270/119192428-01bb0980-ba35-11eb-9f45-7b7c1c2a0a46.png)
 ![list page](https://user-images.githubusercontent.com/82845270/119192442-067fbd80-ba35-11eb-9098-9d1ca1f7ee79.png)
 ![card page](https://user-images.githubusercontent.com/82845270/119192450-097aae00-ba35-11eb-921b-65d92555e63f.png)
