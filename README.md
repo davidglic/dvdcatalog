@@ -59,6 +59,10 @@ Storage Locations Page<br/>
 ![location list page](https://user-images.githubusercontent.com/82845270/119192475-13041600-ba35-11eb-9f50-8f803e79d67d.png)
 
 Database Model<br/>
-![database model](https://user-images.githubusercontent.com/82845270/119192485-16979d00-ba35-11eb-91de-addd6b1c7fde.png)
+![database model](https://user-images.githubusercontent.com/82845270/119193636-bf92c780-ba36-11eb-9c27-27537f9367f7.png)
 
+Users Table stores username and password.
+Locations Table stores name and Usersid to keep track of both who owns a DVD and where it is stored.
+DVDs table stores name of DVD,  Location ID to assign owner, and IMDB reference ID for additional data.
+IMDBs table stores the IMDB ID# as imdbnum.
 
