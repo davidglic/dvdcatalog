@@ -1,7 +1,11 @@
 //import express
 //import controllers
+const express = require('express')
+const router = express.Router()
+const ctrl = require('../controllers')
 
 //.get profile index list page /users/:index = user id list all
+router.get('/', ctrl.library.index)
 
 //.get profile index list page /users/:index/:sort display sorted list
 
@@ -21,3 +25,4 @@
 
 
 //exports
+module.exports = router

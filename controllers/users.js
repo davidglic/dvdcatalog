@@ -5,6 +5,9 @@
 
 //index - landing
 // load index.ejs
+const index = (req, res) => {
+    res.render('users/index.ejs')
+}
 
 //post new user
 // sign up new user
@@ -23,3 +26,6 @@
 // update changed password.
 //rendier /library/index.ejs passing user.
 
+module.exports = {
+    index
+}

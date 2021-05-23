@@ -1,8 +1,12 @@
 //import express
+const express = require('express')
+const router = express.Router()
+const ctrl = require('../controllers')
 //import controllers
 
 //routes
 //.get landing index includes sign up form and log in
+router.get('/', ctrl.users.index)
 
 //.post /signup new sign up with form info then route to library index
 
@@ -14,4 +18,4 @@
 
 //export
 
-
+module.exports = router

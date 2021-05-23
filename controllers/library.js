@@ -2,6 +2,9 @@
 
 //import databases
 //all
+const index = (req, res) => {
+    res.render('library/index.ejs')
+}
 
 //main index
 //query all dvds in library alphabetically and pass to index.ejs to list on screen
@@ -37,3 +40,7 @@
 
 //delete location
 // delete db loctation and reloade locations.ejs
+
+module.exports = {
+    index
+}
