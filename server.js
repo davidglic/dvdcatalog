@@ -43,3 +43,9 @@ app.listen(3000, () => {
 console.log('Server initialized.')
 })
 
+
+//scratch pad
+  //npx sequelize model:generate --name User --attributes name:string,password:string
+  //npx sequelize model:generate --name Location --attributes name:string,user_id:integer
+  //npx sequelize model:generate --name DVD --attributes name:string,location_id:integer,imdb_id:integer
+  //npx sequelize model:generate --name Imdb --attributes imdbnum:string
