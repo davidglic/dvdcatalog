@@ -13,6 +13,8 @@ router.get('/', ctrl.users.index)
 //.post  /login log in and route to library index.
 
 //.get /user/edit edit user page password only???
+router.get('/edit/:user', ctrl.users.editUser)
+
 //.post /user/edit post edited user
 
 

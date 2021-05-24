@@ -21,11 +21,15 @@ const index = (req, res) => {
 
 //display edit user
 //display edit-user.ejs passing userID
+const editUser = (req,res) => {
+    res.render('users/edit-user.ejs')
+}
 
 //post user edit
 // update changed password.
 //rendier /library/index.ejs passing user.
 
 module.exports = {
-    index
+    index,
+    editUser
 }
