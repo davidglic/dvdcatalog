@@ -8,9 +8,10 @@ const ctrl = require('../controllers')
 router.get('/:user', ctrl.library.index)
 
 //.get /add/:user add new DVD card display
-router.get('/add/:user/', ctrl.library.displayCard)
+router.get('/add/:user/', ctrl.library.displayNewCard)
 
 //.post /add/:user add new DVD
+router.post('/add/:user/', ctrl.library.postNewCard)
 
 //.get /loc/:user list locatoins add included in page.
 router.get('/loc/:user/', ctrl.library.displayLocations)

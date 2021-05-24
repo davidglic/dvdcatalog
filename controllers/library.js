@@ -39,7 +39,7 @@ const index = (req, res) => {
         }).then(dvdList => {
             // console.log(dvdList[0].User.name + dvdList[0].Location.name + dvdList[0].Imdb.imdbnum)
             console.log(dvdList[0].Imdb.imdbnum)
-            res.render('library/index.ejs', { dvdList })
+            res.render('library/index.ejs', { dvdList: dvdList, user: dvdList[0].User })
         }
         )
     // res.render('library/index.ejs')
@@ -71,11 +71,50 @@ const displayEditCard = (req, res) => {
 //new card display
 //pass user and locations to new-card.ejs 
 const displayNewCard = (req, res) => {
-    res.render('library/new-card.ejs')
+    User.findByPk(req.params.user).then(user => {
+        Location.findAll({where: {user_id: req.params.user}}).then( locations => {
+            res.render('library/new-card.ejs', {user:user, locations: locations})}
+        )
+        
+    })
+    
 }
 
 //post new card
 // udpate dvd and IMDB db with new card and load card.ejs with new card.
+// is passed name, year, imdbID, and location ID
+const postNewCard = (req, res) => {
+    
+    let imdbRef = 0 
+    Imdb.findOne({where: {imdbnum: req.body.imdbnum}}).then(result => {
+        if (result === null) {
+            console.log('null!')
+            Imdb.create({imdbnum: req.body.imdbnum}).then(newId => {
+                console.log(newId.id)
+                imdbRef = newId.id
+                
+            }) 
+        } else {
+            imdbRef = result.id
+            console.log(result.id)
+        }
+    }).then( ()=> {
+        const newDVD = {
+            name: req.body.name,
+            year: req.body.year,
+            location_id: req.body.location_id,
+            imdb_id: imdbRef,
+            user_id: req.params.user
+        }
+        console.log(newDVD)
+        DVD.create(newDVD).then( () =>
+            res.redirect(`/library/${req.params.user}`))
+    })
+
+
+}
+
+
 
 //display locations
 // query location db by user id and pass list to locations.ejs
@@ -98,5 +137,6 @@ module.exports = {
     displayCard,
     displayEditCard,
     displayNewCard,
-    displayLocations
+    displayLocations,
+    postNewCard
 }

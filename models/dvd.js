@@ -20,7 +20,8 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     year: DataTypes.INTEGER,
     location_id: DataTypes.INTEGER,
-    imdb_id: DataTypes.INTEGER
+    imdb_id: DataTypes.INTEGER,
+    user_id: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'DVD',
