@@ -1,3 +1,30 @@
 body {
     background-color: #C7D59F;
 }
+header {
+    display: flex;
+    flex-direction:row;
+    justify-content: space-between;
+    background-color: #4B5842;
+
+}
+#login {
+    align-self: center;
+}
+.sidenav {
+    height: auto;
+    width: 160px;
+    position: fixed;
+    /* z-index: 1; */
+    top: 88px;
+    left: 0;
+    background-color: #B7CE63;
+    overflow-x: hidden;
+
+
+}
+
+.main {
+    margin-left: 160px; /* same as width of .sidenav */
+    padding: 0px 10px;
+}
