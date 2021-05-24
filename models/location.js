@@ -11,7 +11,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Location.hasMany(models.DVD, {foreignKey: 'location_id'})
+      Location.belongsTo(models.User, {foreignKey: 'user_id'})
     }
+
   };
   Location.init({
     name: DataTypes.STRING,

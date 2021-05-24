@@ -2,12 +2,47 @@
 
 //import databases
 //all
+const User = require('../models').User
+const Imdb = require('../models').Imdb
+const DVD = require('../models').DVD
+const Location = require('../models').Location
 
 
 //main index
 //query all dvds in library alphabetically and pass to index.ejs to list on screen
+//fed /:user
 const index = (req, res) => {
-    res.render('library/index.ejs')
+    // User.findByPk(req.params.user, {
+    //     include: [{
+    //         model: DVD,
+    //         attributes: ['id', 'name', 'year', 'location_id']
+    //     }]
+    // }).then(user => {
+    //     console.log(user.DVDs[0].name)
+    //     res.render('library/index.ejs', { user:user })
+    // })
+    DVD.findAll({
+        where: {
+            user_id: req.params.user
+            },
+        include: [
+            {model: User,
+            attributes: ['id', 'name']
+            },
+            {model: Location,
+            attributes: ['id', 'name']
+            },
+            {model: Imdb,
+            attributes: ['id', 'imdbnum']
+            }
+        ]
+        }).then(dvdList => {
+            // console.log(dvdList[0].User.name + dvdList[0].Location.name + dvdList[0].Imdb.imdbnum)
+            console.log(dvdList[0].Imdb.imdbnum)
+            res.render('library/index.ejs', { dvdList })
+        }
+        )
+    // res.render('library/index.ejs')
 }
 
 //query all dvds that start with <letter> and pass to index.ejs to list on screen

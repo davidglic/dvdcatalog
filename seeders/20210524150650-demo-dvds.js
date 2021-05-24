@@ -6,13 +6,15 @@ module.exports = {
       name:'Princess Bride, The',
       year: 1987,
       location_id: 1,
-      imdb_id: 1
+      imdb_id: 1,
+      user_id: 1
     },
     {
       name:'Death to Smoochy',
       year: 2002,
       location_id: 2,
-      imdb_id: 2
+      imdb_id: 2,
+      user_id: 2
 
     }], {})
   

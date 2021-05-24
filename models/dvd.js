@@ -11,6 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      DVD.belongsTo(models.Imdb, {foreignKey: 'imdb_id'})
+      DVD.belongsTo(models.Location, {foreignKey: 'location_id'})
+      DVD.belongsTo(models.User, {foreignKey: 'user_id'})
     }
   };
   DVD.init({

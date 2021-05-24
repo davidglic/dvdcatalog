@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Imdb.hasMany(models.DVD, {foreignKey: 'imdb_id'})
     }
   };
   Imdb.init({
