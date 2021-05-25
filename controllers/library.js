@@ -7,6 +7,9 @@ const Imdb = require('../models').Imdb
 const DVD = require('../models').DVD
 const Location = require('../models').Location
 
+//apikey here!
+const apiKey = "4d820502"
+const fetch = require('node-fetch')
 
 //main index
 //query all dvds in library alphabetically and pass to index.ejs to list on screen
@@ -65,9 +68,15 @@ const displayCard = (req, res) => {
 
         ]
     }).then(movieresult => {
-        User.findByPk(req.params.user).then(user => {
-            res.render('library/card.ejs', {user: user, movie: movieresult})
+        fetch(`http://www.omdbapi.com/?i=${movieresult.Imdb.imdbnum}&apikey=${apiKey}`)
+        .then(apiResponse => apiResponse.json())
+        .then(apiInfo => {
+            User.findByPk(req.params.user).then(user => {
+                console.log(apiInfo)
+                res.render('library/card.ejs', {user: user, movie: movieresult, apiInfo: apiInfo})
+            })
         })
+
     })
     // res.render('library/card.ejs')
 }

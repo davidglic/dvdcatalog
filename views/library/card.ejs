@@ -3,13 +3,19 @@
     <%- include('../partials/header') %>
     <%- include('../partials/sidebar') %>
     <main class="main">
+
+
+
+
         <div class="section-title">Movie Details</div>
         <div class="main-content"> 
             <div class="cardtext location">Location: <%= `${movie.Location.name}` %></div>
             <div class="cardtext movietitle"> <%= `${movie.name}` %></div>
             <div class="cardtext year">Year: <%= `${movie.year}` %></div>
             <div class="cardtext idnum">ID#: <%= `${movie.Imdb.imdbnum}` %></div>
-            <div class="cardtext api">API INFO HERE...</div>
+            <div class="cardtext api">API INFO HERE...
+
+            </div>
             <div class="cardlink"><a href="/library/edit/<%=`${user.id}/${movie.id}`%>">Edit</a></div>
         </div>
     </main>

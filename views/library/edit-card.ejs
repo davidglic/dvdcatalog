@@ -7,7 +7,7 @@
     <main class="main">
         <div class="section-title">Edit Card</div>
         <div class="main-content">
-            <form action="/library/edit/<%= `${user.id}/${movie.id}` %>" method="Post">
+            <form action="/library/edit/<%= `${user.id}/${movie.id}` %>" method="POST">
                 Movie Name:<input type="text" name="name" value="<%= `${movie.name}` %>">
                 Year of Release:<input type="text" name="year" value="<%= `${movie.year}` %>">
                 IMDB ID:<input type="text" name="imdbnum" value="<%= `${movie.Imdb.imdbnum}` %>">

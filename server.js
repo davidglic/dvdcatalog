@@ -34,6 +34,7 @@ app.use(express.static('public'))
 //export api key from here.
 
 
+
 //default landing reroute.
 app.get('/', (req, res) => {
     res.render('users/index.ejs')
