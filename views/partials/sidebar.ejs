@@ -8,8 +8,8 @@
         <h5>Index by Letter:</h5> 
         <% for (let i=65; i < 91; i++) { %>
            <% let letter = String.fromCharCode(i) %>
-           <a href="/library/<%= `${user.id}/${letter}` %>"><%= `${letter}` %></a>
-           <% if (i%3 === 0) { %>
+           <a class="navletter" href="/library/<%= `${user.id}/${letter}` %>"><%= `${letter}` %></a>
+           <% if (i%4 === 0) { %>
                 <br>
             <% } %>
         <% } %>

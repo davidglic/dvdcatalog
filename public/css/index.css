@@ -1,5 +1,8 @@
 body {
     background-color: #C7D59F;
+    font-family: 'Special Elite', cursive;
+    font-size: 18px;
+    line-height: 150%;
 }
 header {
     display: flex;
@@ -11,6 +14,17 @@ header {
 #login {
     align-self: center;
 }
+
+
+.main {
+    margin-left: 160px; /* same as width of .sidenav */
+    padding: 0px 10px;
+}
+.section-title {
+    font-size: 22px;
+    text-align: center;
+}
+/* sidebar style */
 .sidenav {
     height: auto;
     width: 160px;
@@ -20,11 +34,20 @@ header {
     left: 0;
     background-color: #B7CE63;
     overflow-x: hidden;
-
-
 }
-
-.main {
-    margin-left: 160px; /* same as width of .sidenav */
-    padding: 0px 10px;
+.navletter {
+    font-size: 50px;
+    line-height: 100%;
+    color: black;
+    text-decoration: none;
+}
+/* card styling */
+.cardtext.movietitle {
+    text-align: center;
+}
+.cardtext.location {
+    text-align: right;
+}
+.cardtext.idnum {
+    text-align: right;
 }
