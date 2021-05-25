@@ -6,6 +6,7 @@ const User = require('../models').User
 const Imdb = require('../models').Imdb
 const DVD = require('../models').DVD
 const Location = require('../models').Location
+const { Op } = require("sequelize")
 
 //apikey here!
 const apiKey = "4d820502"
@@ -52,7 +53,29 @@ const index = (req, res) => {
 
 //query all dvds that start with <letter> and pass to index.ejs to list on screen
 const sorted = (req, res) => {
-    res.render('library/sorted.ejs')
+    DVD.findAll({
+        where: {
+            [Op.and]: [{user_id: req.params.user},{name: {[Op.like]: `${req.params.sort}%`}}]
+            },
+        include: [
+            {model: User,
+            attributes: ['id', 'name']
+            },
+            {model: Location,
+            attributes: ['id', 'name']
+            },
+            {model: Imdb,
+            attributes: ['id', 'imdbnum']
+            }
+        ]
+        }).then(dvdList => {
+            console.log(dvdList)
+            res.render('library/sorted.ejs', { dvdList: dvdList, user: dvdList[0].User })
+        }
+        ).catch( () => {
+            res.redirect(`/library/add/${req.params.user}`)
+        })
+    // res.render('library/sorted.ejs')
 }
 
 //dvd card display

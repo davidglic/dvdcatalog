@@ -3,8 +3,13 @@
     <%- include('../partials/header') %>
     <%- include('../partials/sidebar') %>
     <main class="main">
-        <div class="section-title">Index-Sorted List</div>
-        <div class="main-content"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, commodi architecto illo eaque dolore et libero est, exercitationem dolorum eos, iure quia aut. Deserunt nisi alias ipsum cum eaque officia!</div>
+        <div class="section-title"><%= `${user.name}'s Sorted Library`%></div>
+        <div class="main-content"> 
+            <% for (i=0; i < dvdList.length; i++) { %>
+                
+                <a href="/library/dvd/<%= user.id %>/<%= dvdList[i].id %>"><div><%= `${dvdList[i].name} -- ${dvdList[i].year} -- ${dvdList[i].Imdb.imdbnum}` %></div></a>
+            <% } %>
+        </div>
     </main>
     
     <%- include('../partials/footer') %>
