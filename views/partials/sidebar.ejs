@@ -1,11 +1,18 @@
 <aside class="sidenav">
-    Navbar here.
+    <h5>Navigation</h5>
     <p><a href="/library/<%= `${user.id}` %>">View all</a></p>
     <p><a href="/library/add/<%= `${user.id}` %>">Add New DVD</a></p>
     <p><a href="/library/loc/<%= `${user.id}` %>">Edit/Add Locations</a></p>
     <p>
     <div class="alphacontainer">
-        <a href="/library/<%= `${user.id}/G` %>">G</a>
+        <h5>Index by Letter:</h5> 
+        <% for (let i=65; i < 91; i++) { %>
+           <% let letter = String.fromCharCode(i) %>
+           <a href="/library/<%= `${user.id}/${letter}` %>"><%= `${letter}` %></a>
+           <% if (i%3 === 0) { %>
+                <br>
+            <% } %>
+        <% } %>
     </div>
 
     </p>
