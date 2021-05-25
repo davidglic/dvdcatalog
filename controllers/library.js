@@ -96,11 +96,46 @@ const displayEditCard = (req, res) => {
 //post dvd edit
 //post changes to db and return to card card.ejs.
 const postEditCard = (req, res) => {
-
+    Imdb.findOne({where: {imdbnum: req.body.imdbnum}}).then(idExists => {
+        if (idExists === null) {
+            Imdb.create({imdbnum: req.body.imdbnum}).then( () => {
+                Imdb.findOne({where: {imdbnum: req.body.imdbnum}}).then(result => {
+                    const updatedDVD = {
+                        name: req.body.name,
+                        year: req.body.year,
+                        location_id: req.body.location_id,
+                        imdb_id: result.id,
+                        user_id: req.params.user
+                    }
+                    DVD.update(updatedDVD, {where: {id: req.params.dvd}, returning: true}).then( () => {
+                        res.redirect(`/library/${req.params.user}`)
+                    })
+                })
+            })
+        } else {
+            Imdb.findOne({where: {imdbnum: req.body.imdbnum}}).then(result => {
+                const updatedDVD = {
+                    name: req.body.name,
+                    year: req.body.year,
+                    location_id: req.body.location_id,
+                    imdb_id: result.id,
+                    user_id: req.params.user
+                }
+                DVD.update(updatedDVD, {where: {id: req.params.dvd}, returning: true}).then( () => {
+                    res.redirect(`/library/${req.params.user}`)
+                })
+            })
+        }
+    })
 }
 
 //post dvd delete
 //destory dvd in database and return to main index.
+const deleteCard = (req, res) => {
+    DVD.destroy({where: {id: req.params.dvd}}).then( () => {
+        res.redirect(`/library/${req.params.user}`)
+    })
+}
 
 //new card display
 //pass user and locations to new-card.ejs 
@@ -123,7 +158,6 @@ const postNewCard = (req, res) => {
         if (idExists === null) {
             console.log('false!')
             Imdb.create({imdbnum: req.body.imdbnum}).then( () => {
-                imdbRef = Imdb.create({imdbnum: req.body.imdbnum}).then( ()=> {
                     Imdb.findOne({where: {imdbnum: req.body.imdbnum}}).then(result => {
                         const newDVD = {
                             name: req.body.name,
@@ -136,7 +170,7 @@ const postNewCard = (req, res) => {
                             res.redirect(`/library/${req.params.user}`)
                         })
                     })
-                })
+                
             })
         } else {
             Imdb.findOne({where: {imdbnum: req.body.imdbnum}}).then(result => {
@@ -186,7 +220,12 @@ const postNewCard = (req, res) => {
 //display locations
 // query location db by user id and pass list to locations.ejs
 const displayLocations = (req, res) => {
-    res.render('library/locations.ejs')
+    User.findByPk(req.params.user).then(user => {
+        Location.findAll({where: {user_id: req.params.user}}).then( locations => {
+            res.render('library/locations.ejs', {user: user, locations: locations}) 
+        })
+    })
+    // res.render('library/locations.ejs')
 }
 
 //post location
@@ -194,6 +233,15 @@ const displayLocations = (req, res) => {
 
 //update locatoin
 //update db loctation and reloade locations.ejs
+const updateLocation = (req, res) => {
+    Location.update(req.body, {where: {id: req.params.loc}}).then( () => {
+        User.findByPk(req.params.user).then(user => {
+            Location.findAll({where: {user_id: req.params.user}}).then( locations => {
+                res.render('library/locations.ejs', {user: user, locations: locations}) 
+            })
+        })
+    })
+}
 
 //delete location
 // delete db loctation and reloade locations.ejs
@@ -207,5 +255,7 @@ module.exports = {
     displayNewCard,
     displayLocations,
     postNewCard,
-    postEditCard
+    postEditCard,
+    deleteCard,
+    updateLocation
 }

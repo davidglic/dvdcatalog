@@ -17,7 +17,8 @@ router.post('/add/:user/', ctrl.library.postNewCard)
 router.get('/loc/:user/', ctrl.library.displayLocations)
 
 //.post/loc/:user add new location refresh page.
-//.put/loc/:user update locatoin by button
+//.put/loc/:user/:loc update locatoin by button
+router.put('/loc/:user/:loc', ctrl.library.updateLocation)
 //.delete/loc/:user delete locatoin by button
 
 
@@ -34,7 +35,7 @@ router.get('/edit/:user/:dvd', ctrl.library.displayEditCard)
 router.post('/edit/:user/:dvd', ctrl.library.postEditCard)
 
 //.delete /edit/:user/:dvd delete and return to list all
-
+router.delete('/edit/:user/:dvd', ctrl.library.deleteCard)
 
 
 

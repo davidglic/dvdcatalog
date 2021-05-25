@@ -22,6 +22,9 @@
                 </select>                 
                 <input type="submit" name="" id="" value="Edit">
             </form>
+            <form action="/library/edit/<%= `${user.id}/${movie.id}` %>?_method=DELETE" method="POST">
+                <input type="submit" value="Delete">
+            </form>
         </div>
     </main>
     

@@ -4,7 +4,15 @@
     <%- include('../partials/sidebar') %>
     <main class="main">
         <div class="section-title">Location Manager</div>
-        <div class="main-content"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, commodi architecto illo eaque dolore et libero est, exercitationem dolorum eos, iure quia aut. Deserunt nisi alias ipsum cum eaque officia!</div>
+        <div class="main-content"> 
+            <% for (i=0; i < locations.length; i++) { %>
+                <form action="/library/loc/<%= `${user.id}/${locations[i].id}` %>?_method=PUT" method="POST">
+                    <input type="text" name="name" value="<%= `${locations[i].name}` %>">
+                    <input type="submit" value="Edit">
+                </form>
+            <% } %>
+     
+        </div>
     </main>
     
     <%- include('../partials/footer') %>
