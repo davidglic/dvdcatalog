@@ -52,8 +52,22 @@ const sorted = (req, res) => {
 
 //dvd card display
 //query data based on dvd id and pass id, name, location info, and imdbid# to card.ejs to display single dvd info--fetch api info here????
+//'/dvd/:user/:dvd' is the route
 const displayCard = (req, res) => {
-    res.render('library/card.ejs')
+    DVD.findByPk(req.params.dvd, {
+        include: [
+            {model: Imdb,
+            attributes: ['id', 'imdbnum']},
+            {model: Location,
+            attributes: ['id','name']}
+
+        ]
+    }).then(movieresult => {
+        User.findByPk(req.params.user).then(user => {
+            res.render('library/card.ejs', {user: user, movie: movieresult})
+        })
+    })
+    // res.render('library/card.ejs')
 }
 
 //dvd card edit display
@@ -164,19 +178,7 @@ const displayLocations = (req, res) => {
 //delete location
 // delete db loctation and reloade locations.ejs
 
-function verifyIMDB(imdbToCheck) {
-    //check if IMDB# is in DB return T/f
-    Imdb.findOne({where: {imdbnum: imdbToCheck}}).then(result => {
-        if (result === null) {
-            console.log("Null!")
-            x = false
-        } else {
-            x = true
-        }
-        return x
-    })
 
-}
 module.exports = {
     index,
     sorted,
