@@ -230,6 +230,17 @@ const displayLocations = (req, res) => {
 
 //post location
 //update db with new loctation and reloade locations.ejs
+const addLocation = (req, res) => {
+        Location.create({name: req.body.name, user_id: req.params.user}).then(
+            Location.findAll({where: {user_id: req.params.user}}).then(locations => {
+                User.findByPk(req.params.user).then(user => {
+                // res.render('library/locations.ejs', {user: user, locations: locations})
+                res.redirect('back')
+                })
+            })
+        )
+    
+}
 
 //update locatoin
 //update db loctation and reloade locations.ejs
@@ -257,5 +268,6 @@ module.exports = {
     postNewCard,
     postEditCard,
     deleteCard,
-    updateLocation
+    updateLocation,
+    addLocation
 }

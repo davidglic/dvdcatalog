@@ -10,7 +10,15 @@
                     <input type="text" name="name" value="<%= `${locations[i].name}` %>">
                     <input type="submit" value="Edit">
                 </form>
+                <!-- <form action="/library/loc/<%= `${user.id}/${locations[i].id}` %>?_method=DELETE" method="POST">
+                    <input type="submit" value="Delete <%= `${locations[i].name}` %>">
+                </form> -->
             <% } %>
+            
+            <form action="/library/loc/<%= `${user.id}` %>" method="POST">
+                <input type="text" name="name" value="New Location">
+                <input type="submit" value="Add New">
+            </form>
      
         </div>
     </main>

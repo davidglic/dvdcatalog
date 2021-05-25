@@ -17,8 +17,11 @@ router.post('/add/:user/', ctrl.library.postNewCard)
 router.get('/loc/:user/', ctrl.library.displayLocations)
 
 //.post/loc/:user add new location refresh page.
+router.post('/loc/:user', ctrl.library.addLocation)
+
 //.put/loc/:user/:loc update locatoin by button
 router.put('/loc/:user/:loc', ctrl.library.updateLocation)
+
 //.delete/loc/:user delete locatoin by button
 
 
