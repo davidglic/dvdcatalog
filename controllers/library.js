@@ -41,7 +41,9 @@ const index = (req, res) => {
             console.log(dvdList[0].Imdb.imdbnum)
             res.render('library/index.ejs', { dvdList: dvdList, user: dvdList[0].User })
         }
-        )
+        ).catch( () => {
+            res.redirect(`/library/add/${req.params.user}`)
+        })
     // res.render('library/index.ejs')
 }
 

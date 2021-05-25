@@ -19,15 +19,20 @@
         </form>
     </header>
     <main class="main">
+
+        <% if (typeof error != 'undefined') { %>
+            <div class="error"><%= error %></div>
+        <% } %>
+
         <div class="section-title">Welcome to DVD Card Catalog!</div>
         <div class="main-content">
             <h3>Already a User? Log in above.</h3>
             <div class="intro">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, architecto voluptatem. Totam, quaerat deleniti aspernatur tempora aliquid tenetur repudiandae sequi autem delectus, libero asperiores sed dolorum eum officiis cumque dolor.</div>
             <div>
-                <form action="" id="signup">
+                <form action="/users/signup" method="POST" id="signup">
                     <h3>Create a new account.</h3>
-                    Name:<input type="text">
-                    Password:<input type="password">
+                    Name:<input type="text" name="name">
+                    Password:<input type="password" name="password">
                     <input type="submit" value="Sign Up">
                 </form>
                 

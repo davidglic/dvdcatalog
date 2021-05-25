@@ -9,6 +9,7 @@ const ctrl = require('../controllers')
 router.get('/', ctrl.users.index)
 
 //.post /signup new sign up with form info then route to library index
+router.post('/signup', ctrl.users.createUser)
 
 //.post  /login log in and route to library index
 router.post('/login', ctrl.users.loginUser)
