@@ -31,6 +31,8 @@ router.get('/dvd/:user/:dvd', ctrl.library.displayCard)
 router.get('/edit/:user/:dvd', ctrl.library.displayEditCard)
 
 //.post /edit/:user/:dvd edit and return to list all
+router.post('/edit/:user/:dvd', ctrl.library.postEditCard)
+
 //.delete /edit/:user/:dvd delete and return to list all
 
 

@@ -73,11 +73,31 @@ const displayCard = (req, res) => {
 //dvd card edit display
 //query and pass dvd and location info to edit-card.ejs
 const displayEditCard = (req, res) => {
-    res.render('library/edit-card.ejs')
+    DVD.findByPk(req.params.dvd, {
+        include: [
+            {model: Imdb,
+            attributes: ['id', 'imdbnum']},
+            {model: Location,
+            attributes: ['id','name']}
+
+        ]
+    }).then(movieresult => {
+        User.findByPk(req.params.user).then(user => {
+            Location.findAll({where: {user_id: req.params.user}}).then( locations => {
+                res.render('library/edit-card.ejs', {user: user, movie: movieresult, locations: locations})
+            }
+                
+            )
+
+        })
+    })
 }
 
 //post dvd edit
 //post changes to db and return to card card.ejs.
+const postEditCard = (req, res) => {
+
+}
 
 //post dvd delete
 //destory dvd in database and return to main index.
@@ -186,5 +206,6 @@ module.exports = {
     displayEditCard,
     displayNewCard,
     displayLocations,
-    postNewCard
+    postNewCard,
+    postEditCard
 }

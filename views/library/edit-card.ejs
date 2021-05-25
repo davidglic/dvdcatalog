@@ -1,12 +1,31 @@
+
+
 <%- include('../partials/boilerplate') %>
 <body>
     <%- include('../partials/header') %>
     <%- include('../partials/sidebar') %>
     <main class="main">
         <div class="section-title">Edit Card</div>
-        <div class="main-content"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, commodi architecto illo eaque dolore et libero est, exercitationem dolorum eos, iure quia aut. Deserunt nisi alias ipsum cum eaque officia!</div>
+        <div class="main-content">
+            <form action="/library/edit/<%= `${user.id}/${movie.id}` %>" method="Post">
+                Movie Name:<input type="text" name="name" value="<%= `${movie.name}` %>">
+                Year of Release:<input type="text" name="year" value="<%= `${movie.year}` %>">
+                IMDB ID:<input type="text" name="imdbnum" value="<%= `${movie.Imdb.imdbnum}` %>">
+                Location:<select name="location_id" >
+                    <% for (let i = 0; i < locations.length; i++) { %>
+                        <% if (movie.Location.id === locations[i].id) { %>
+                            <option value="<%= locations[i].id%>" selected><%= locations[i].name %></option>
+                        <% } else { %>
+                            <option value="<%= locations[i].id%>"><%= locations[i].name %></option>
+                            <% } %>
+                    <% } %>
+                </select>                 
+                <input type="submit" name="" id="" value="Edit">
+            </form>
+        </div>
     </main>
     
     <%- include('../partials/footer') %>
 </body>
 </html>
+ 

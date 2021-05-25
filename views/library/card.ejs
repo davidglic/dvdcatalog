@@ -10,7 +10,7 @@
             <div class="cardtext year">Year: <%= `${movie.year}` %></div>
             <div class="cardtext idnum">ID#: <%= `${movie.Imdb.imdbnum}` %></div>
             <div class="cardtext api">API INFO HERE...</div>
-            <div class="cardlink">Edit</div>
+            <div class="cardlink"><a href="/library/edit/<%=`${user.id}/${movie.id}`%>">Edit</a></div>
         </div>
     </main>
     
