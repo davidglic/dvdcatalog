@@ -29,6 +29,7 @@ const index = (req, res) => {
         where: {
             user_id: req.params.user
             },
+            order: [['name', 'ASC']],
         include: [
             {model: User,
             attributes: ['id', 'name']
@@ -40,6 +41,7 @@ const index = (req, res) => {
             attributes: ['id', 'imdbnum']
             }
         ]
+        
         }).then(dvdList => {
             // console.log(dvdList[0].User.name + dvdList[0].Location.name + dvdList[0].Imdb.imdbnum)
             console.log(dvdList[0].Imdb.imdbnum)
@@ -57,6 +59,7 @@ const sorted = (req, res) => {
         where: {
             [Op.and]: [{user_id: req.params.user},{name: {[Op.like]: `${req.params.sort}%`}}]
             },
+            order: [['name', 'ASC']],
         include: [
             {model: User,
             attributes: ['id', 'name']
