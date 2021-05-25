@@ -1,7 +1,12 @@
 //user controllers
 
+const { users } = require(".")
+
 //import databases
 //user DB
+const User = require('../models').User
+const DVD = require('../models').DVD
+const Location = require('../models').Location
 
 //index - landing
 // load index.ejs
@@ -18,6 +23,21 @@ const index = (req, res) => {
 // check user id exists and check password
 //ender to library/index.ejs passing user.
 //alert "Invalded User ID or password. if failed."
+const loginUser = (req,res) => {
+    User.findOne({where: {name: req.body.userID}}).then(result => {
+        if (result.password === req.body.password) {
+            res.redirect(`/library/${result.id}`)
+        } else {
+            console.log("Invalid password.")
+            res.redirect(`back`)
+        }
+    }
+        
+    ).catch( () => {
+        console.log("Invalid userid.")
+        res.redirect(`back`)
+    })
+}
 
 //display edit user
 //display edit-user.ejs passing userID
@@ -31,5 +51,6 @@ const editUser = (req,res) => {
 
 module.exports = {
     index,
-    editUser
+    editUser,
+    loginUser
 }

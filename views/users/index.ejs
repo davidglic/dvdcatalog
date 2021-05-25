@@ -12,15 +12,27 @@
 <body>
     <header>
         <h1>DVD Card Catalog</h1>
-        <form id="login">
-            <input type="text" name="userID" id="userID">
-            <input type="password" name="password" id="password">
+        <form id="login" action="/users/login" method="POST">
+            <input type="text" name="userID" id="userID" placeholder="User ID">
+            <input type="password" name="password" id="password" placeholder="Password">
             <input type="submit" name="" id="loginsubmit" value="Login">
         </form>
     </header>
     <main class="main">
-        <div class="section-title">Section title</div>
-        <div class="main-content"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, commodi architecto illo eaque dolore et libero est, exercitationem dolorum eos, iure quia aut. Deserunt nisi alias ipsum cum eaque officia!</div>
+        <div class="section-title">Welcome to DVD Card Catalog!</div>
+        <div class="main-content">
+            <h3>Already a User? Log in above.</h3>
+            <div class="intro">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, architecto voluptatem. Totam, quaerat deleniti aspernatur tempora aliquid tenetur repudiandae sequi autem delectus, libero asperiores sed dolorum eum officiis cumque dolor.</div>
+            <div>
+                <form action="" id="signup">
+                    <h3>Create a new account.</h3>
+                    Name:<input type="text">
+                    Password:<input type="password">
+                    <input type="submit" value="Sign Up">
+                </form>
+                
+            </div>
+        </div>
     </main>
     <aside class="sidenav">
         Navbar here.
