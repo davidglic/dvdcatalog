@@ -84,32 +84,65 @@ const displayNewCard = (req, res) => {
 // udpate dvd and IMDB db with new card and load card.ejs with new card.
 // is passed name, year, imdbID, and location ID
 const postNewCard = (req, res) => {
-    
-    let imdbRef = 0 
-    Imdb.findOne({where: {imdbnum: req.body.imdbnum}}).then(result => {
-        if (result === null) {
-            console.log('null!')
-            Imdb.create({imdbnum: req.body.imdbnum}).then(newId => {
-                console.log(newId.id)
-                imdbRef = newId.id
-                
-            }) 
+
+    Imdb.findOne({where: {imdbnum: req.body.imdbnum}}).then(idExists => {  
+        if (idExists === null) {
+            console.log('false!')
+            Imdb.create({imdbnum: req.body.imdbnum}).then( () => {
+                imdbRef = Imdb.create({imdbnum: req.body.imdbnum}).then( ()=> {
+                    Imdb.findOne({where: {imdbnum: req.body.imdbnum}}).then(result => {
+                        const newDVD = {
+                            name: req.body.name,
+                            year: req.body.year,
+                            location_id: req.body.location_id,
+                            imdb_id: result.id,
+                            user_id: req.params.user
+                        }  
+                        DVD.create(newDVD).then( () => {
+                            res.redirect(`/library/${req.params.user}`)
+                        })
+                    })
+                })
+            })
         } else {
-            imdbRef = result.id
-            console.log(result.id)
+            Imdb.findOne({where: {imdbnum: req.body.imdbnum}}).then(result => {
+                const newDVD = {
+                    name: req.body.name,
+                    year: req.body.year,
+                    location_id: req.body.location_id,
+                    imdb_id: result.id,
+                    user_id: req.params.user
+                } 
+                DVD.create(newDVD).then( () => {
+                    res.redirect(`/library/${req.params.user}`)
+                }) 
+            })
         }
-    }).then( ()=> {
-        const newDVD = {
-            name: req.body.name,
-            year: req.body.year,
-            location_id: req.body.location_id,
-            imdb_id: imdbRef,
-            user_id: req.params.user
-        }
-        console.log(newDVD)
-        DVD.create(newDVD).then( () =>
-            res.redirect(`/library/${req.params.user}`))
-    })
+    })    
+    // let imdbRef = 0 
+    // Imdb.findOne({where: {imdbnum: req.body.imdbnum}}).then(result => {
+    //     if (result === null) {
+    //         console.log('null!')
+    //        imdbRef = Imdb.create({imdbnum: req.body.imdbnum})
+    //        console.log("new = " + imdbRef)
+    //     } else {
+    //         imdbRef = result.id
+    //         console.log(result.id)
+    //     }
+    // }).then( ()=> {
+
+    //     // imdbRef = newId.id
+    //     const newDVD = {
+    //         name: req.body.name,
+    //         year: req.body.year,
+    //         location_id: req.body.location_id,
+    //         imdb_id: imdbRef,
+    //         user_id: req.params.user
+    //     }
+    //     console.log(newDVD)
+    //     DVD.create(newDVD).then( () =>
+    //         res.redirect(`/library/${req.params.user}`))
+    // })
 
 
 }
@@ -131,6 +164,19 @@ const displayLocations = (req, res) => {
 //delete location
 // delete db loctation and reloade locations.ejs
 
+function verifyIMDB(imdbToCheck) {
+    //check if IMDB# is in DB return T/f
+    Imdb.findOne({where: {imdbnum: imdbToCheck}}).then(result => {
+        if (result === null) {
+            console.log("Null!")
+            x = false
+        } else {
+            x = true
+        }
+        return x
+    })
+
+}
 module.exports = {
     index,
     sorted,
