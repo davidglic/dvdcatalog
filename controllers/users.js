@@ -63,7 +63,12 @@ const loginUser = (req,res) => {
 //display edit user
 //display edit-user.ejs passing userID
 const editUser = (req,res) => {
-    res.render('users/edit-user.ejs')
+    if(req.session.loggedIn && req.session.user_id === Number(req.params.user)) {
+        res.render('users/edit-user.ejs')
+      } else {
+        res.redirect('/') 
+      }
+    
 }
 
 //post user edit
