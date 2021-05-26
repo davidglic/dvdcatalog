@@ -49,60 +49,88 @@ const index = (req, res) => {
    
 
 
-    DVD.findAll({
-        where: {
-            user_id: req.params.user
-            },
-            order: [['name', 'ASC']],
-        include: [
-            {model: User,
-            attributes: ['id', 'name']
-            },
-            {model: Location,
-            attributes: ['id', 'name']
-            },
-            {model: Imdb,
-            attributes: ['id', 'imdbnum']
-            }
-        ]
+    // DVD.findAll({
+    //     where: {
+    //         user_id: req.params.user
+    //         },
+    //         order: [['name', 'ASC']],
+    //     include: [
+    //         {model: User,
+    //         attributes: ['id', 'name']
+    //         },
+    //         {model: Location,
+    //         attributes: ['id', 'name']
+    //         },
+    //         {model: Imdb,
+    //         attributes: ['id', 'imdbnum']
+    //         }
+    //     ]
         
-        }).then(dvdList => {
-            // console.log(dvdList[0].User.name + dvdList[0].Location.name + dvdList[0].Imdb.imdbnum)
-            console.log(dvdList[0].Imdb.imdbnum)
-            res.render('library/index.ejs', { dvdList: dvdList, user: dvdList[0].User })
-        }
-        ).catch( () => {
-            res.redirect(`/library/add/${req.params.user}`)
-        })
+    //     }).then(dvdList => {
+    //         // console.log(dvdList[0].User.name + dvdList[0].Location.name + dvdList[0].Imdb.imdbnum)
+    //         console.log(dvdList[0].Imdb.imdbnum)
+    //         res.render('library/index.ejs', { dvdList: dvdList, user: dvdList[0].User })
+    //     }
+    //     ).catch( () => {
+    //         res.redirect(`/library/add/${req.params.user}`)
+    //     })
     // res.render('library/index.ejs')
 }
 
 //query all dvds that start with <letter> and pass to index.ejs to list on screen
 const sorted = (req, res) => {
-    DVD.findAll({
-        where: {
-            [Op.and]: [{user_id: req.params.user},{name: {[Op.like]: `${req.params.sort}%`}}]
-            },
-            order: [['name', 'ASC']],
-        include: [
-            {model: User,
-            attributes: ['id', 'name']
-            },
-            {model: Location,
-            attributes: ['id', 'name']
-            },
-            {model: Imdb,
-            attributes: ['id', 'imdbnum']
+    if(req.session.loggedIn && req.session.user_id === Number(req.params.user)) {
+        DVD.findAll({
+            where: {
+                [Op.and]: [{user_id: req.params.user},{name: {[Op.like]: `${req.params.sort}%`}}]
+                },
+                order: [['name', 'ASC']],
+            include: [
+                {model: User,
+                attributes: ['id', 'name']
+                },
+                {model: Location,
+                attributes: ['id', 'name']
+                },
+                {model: Imdb,
+                attributes: ['id', 'imdbnum']
+                }
+            ]
+            }).then(dvdList => {
+                console.log(dvdList)
+                res.render('library/sorted.ejs', { dvdList: dvdList, user: dvdList[0].User })
             }
-        ]
-        }).then(dvdList => {
-            console.log(dvdList)
-            res.render('library/sorted.ejs', { dvdList: dvdList, user: dvdList[0].User })
-        }
-        ).catch( () => {
-            res.redirect(`/library/add/${req.params.user}`)
-        })
-    // res.render('library/sorted.ejs')
+            ).catch( () => {
+                res.redirect(`/library/add/${req.params.user}`)
+            })
+    } else {
+        res.redirect('/') 
+    }
+
+    // DVD.findAll({
+    //     where: {
+    //         [Op.and]: [{user_id: req.params.user},{name: {[Op.like]: `${req.params.sort}%`}}]
+    //         },
+    //         order: [['name', 'ASC']],
+    //     include: [
+    //         {model: User,
+    //         attributes: ['id', 'name']
+    //         },
+    //         {model: Location,
+    //         attributes: ['id', 'name']
+    //         },
+    //         {model: Imdb,
+    //         attributes: ['id', 'imdbnum']
+    //         }
+    //     ]
+    //     }).then(dvdList => {
+    //         console.log(dvdList)
+    //         res.render('library/sorted.ejs', { dvdList: dvdList, user: dvdList[0].User })
+    //     }
+    //     ).catch( () => {
+    //         res.redirect(`/library/add/${req.params.user}`)
+    //     })
+   
 }
 
 //dvd card display
