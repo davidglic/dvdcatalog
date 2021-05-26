@@ -64,3 +64,10 @@ console.log('Server initialized.')
 // } else {
 //   console.log("User logged out.")
 // }
+
+// if(req.session.loggedIn && req.session.user_id === Number(req.params.user)) {
+//   console.log("User logged in.")
+// } else {
+//   console.log("User logged out.")
+//   res.redirect('/') 
+// }
