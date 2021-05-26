@@ -6,14 +6,14 @@
         <div class="section-title">New Card</div>
         <div class="main-content">
             <form action="/library/add/<%= `${user.id}` %>" method="POST">
-                DVD Name:<input type="text" name="name">
-                Year of Release:<input type="text" name="year">
-                IMDB ID#:<input type="text" name="imdbnum">
+                DVD Name:<input type="text" name="name"><br>
+                Year of Release:<input type="text" name="year"><br>
+                IMDB ID#:<input type="text" name="imdbnum"><br>
                 Location:<select name="location_id">
                     <% for (let i = 0; i < locations.length; i++) { %>
                         <option value="<%= locations[i].id%>"><%= locations[i].name %></option>
                     <% } %>
-                </select>
+                </select><br>
                 <input type="submit" name="" id="" value="Add">
             </form>
         </div>

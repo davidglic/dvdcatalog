@@ -8,9 +8,9 @@
         <div class="section-title">Edit Card</div>
         <div class="main-content">
             <form action="/library/edit/<%= `${user.id}/${movie.id}` %>" method="POST">
-                Movie Name:<input type="text" name="name" value="<%= `${movie.name}` %>">
-                Year of Release:<input type="text" name="year" value="<%= `${movie.year}` %>">
-                IMDB ID:<input type="text" name="imdbnum" value="<%= `${movie.Imdb.imdbnum}` %>">
+                Movie Name:<input type="text" name="name" value="<%= `${movie.name}` %>"><br>
+                Year of Release:<input type="text" name="year" value="<%= `${movie.year}` %>"><br>
+                IMDB ID:<input type="text" name="imdbnum" value="<%= `${movie.Imdb.imdbnum}` %>"><br>
                 Location:<select name="location_id" >
                     <% for (let i = 0; i < locations.length; i++) { %>
                         <% if (movie.Location.id === locations[i].id) { %>
@@ -19,8 +19,8 @@
                             <option value="<%= locations[i].id%>"><%= locations[i].name %></option>
                             <% } %>
                     <% } %>
-                </select>                 
-                <input type="submit" name="" id="" value="Edit">
+                </select><br>                 
+                <input type="submit" name="" id="" value="Update Card">
             </form>
             <form action="/library/edit/<%= `${user.id}/${movie.id}` %>?_method=DELETE" method="POST">
                 <input type="submit" value="Delete">

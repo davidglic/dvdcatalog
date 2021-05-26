@@ -1,16 +1,35 @@
 body {
-    background-color: #C7D59F;
+    background-color: #F9DC5C;
     font-family: 'Special Elite', cursive;
     font-size: 18px;
     line-height: 150%;
+}
+html {
+    margin: 0;
+}
+footer {
+    background-color: #011936;
 }
 header {
     display: flex;
     flex-direction:row;
     justify-content: space-between;
-    background-color: #4B5842;
+    background-color: #011936;
+    color: #F4FFFD;
 
 }
+header a {
+    color: #F4FFFD;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+a:hover {
+    font-weight: bold;
+}
+
 #login {
     align-self: center;
 }
@@ -18,11 +37,23 @@ header {
 
 .main {
     margin-left: 160px; /* same as width of .sidenav */
-    padding: 0px 10px;
+
 }
+.main-content {
+    background-color: #F9DC5C;
+    /* width: 800px; */
+    height: 639px;
+    overflow-y: scroll;
+    
+}
+
+
 .section-title {
     font-size: 22px;
     text-align: center;
+    background-color: #465362;
+    color: #F4FFFD;
+    /* position: absolute; */
 }
 /* sidebar style */
 .sidenav {
@@ -30,9 +61,10 @@ header {
     width: 160px;
     position: fixed;
     /* z-index: 1; */
-    top: 88px;
-    left: 0;
-    background-color: #B7CE63;
+    top: 83px;
+    left: 8px;
+    background-color: #ED254E;
+    color: #F4FFFD;
     overflow-x: hidden;
 }
 .navletter {
@@ -43,11 +75,28 @@ header {
 }
 /* card styling */
 .cardtext.movietitle {
-    text-align: center;
+    text-align: left;
 }
 .cardtext.location {
-    text-align: right;
+    text-align: center;
 }
 .cardtext.idnum {
-    text-align: right;
+    text-align: center;
 }
+
+
+/* card container */
+.cardcontainer {
+    display: flex;
+    flex-direction: row;
+}
+
+/* color schema
+https://coolors.co/ed254e-f9dc5c-f4fffd-011936-465362
+#ED254E red
+#F9DC5C yellow
+#F4FFFD white
+#011936 darkblue
+#465362 blueish gray
+
+*/

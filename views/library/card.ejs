@@ -6,19 +6,36 @@
 
         <div class="section-title">Movie Details</div>
         <div class="main-content"> 
-
             <div class="cardtext movietitle"><b><u><%= `${movie.name}` %></u></b></div>
-            <div class="cardtext location"><b>Location: </b><%= `${movie.Location.name}` %></div>
-            <div class="cardtext idnum"><b>ID#: </b><a href="<%= `https://www.imdb.com/title/${movie.Imdb.imdbnum}/` %>" target="_blank"><%= `${movie.Imdb.imdbnum}` %></a></div>
-            <div class="cardtext year"><b>Year: </b><%= `${movie.year}` %></div>
-            
-            <div class="cardtext api director"><b>Director: </b><%= apiInfo.Director %></div>
-            <div class="cardtext api writer"><b>Writer: </b><%= apiInfo.Writer %></div>
-            <div class="cardtext api genre"><b>Genre: </b><%= apiInfo.Genre %></div>
-            <div class="cardtext api actors"><b>Actors: </b><%= apiInfo.Actors %></div>
-            <div class="cardtext api plot"><b>Plot: </b><%= apiInfo.Plot %></div>
 
-            <div class="cardtext api poster"><img src="<%= apiInfo.Poster %>" alt=""></div>
+            <div class="cardcontainer">
+
+                <div class="leftside">
+                    <br>
+                    <div class="cardtext year"><b>Year: </b><%= `${movie.year}` %></div>
+                    <div class="cardtext api director"><b>Director: </b><%= apiInfo.Director %></div>
+                    <div class="cardtext api writer"><b>Writer: </b><%= apiInfo.Writer %></div>
+                    <div class="cardtext api genre"><b>Genre: </b><%= apiInfo.Genre %></div>
+                    <div class="cardtext api actors"><b>Actors: </b><%= apiInfo.Actors %></div>
+                    <div class="cardtext api plot"><b>Plot: </b><%= apiInfo.Plot %></div>
+                    <div class="cardtext location"><b>Location: </b><%= `${movie.Location.name}` %></div>
+                    <div class="cardtext idnum"><b>ID#: </b><a href="<%= `https://www.imdb.com/title/${movie.Imdb.imdbnum}/` %>" target="_blank"><%= `${movie.Imdb.imdbnum}` %></a></div>
+
+                </div>
+
+                <div class="rightside">
+                    <div class="cardtext api poster"><img src="<%= apiInfo.Poster %>" alt=""></div>
+
+                </div>
+
+            </div>
+
+            
+            
+            
+            
+
+            
 
             <div class="cardlink"><a href="/library/edit/<%=`${user.id}/${movie.id}`%>">Edit</a></div>
         </div>
