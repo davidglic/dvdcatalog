@@ -4,7 +4,14 @@
     <%- include('../partials/sidebar') %>
     <main class="main">
         <div class="section-title">Edit User</div>
-        <div class="main-content"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, commodi architecto illo eaque dolore et libero est, exercitationem dolorum eos, iure quia aut. Deserunt nisi alias ipsum cum eaque officia!</div>
+        <div class="main-content"> 
+            Change Password:
+            <form action="/users/edit/<%= `${user.id}` %>" method="POST">
+                <input type="password" name="password" id="">
+                <input type="submit" name="" id="">
+            </form>
+
+        </div>
     </main>
     
     <%- include('../partials/footer') %>

@@ -18,7 +18,7 @@ router.post('/login', ctrl.users.loginUser)
 router.get('/edit/:user', ctrl.users.editUser)
 
 //.post /user/edit post edited user
-
+router.post('/edit/:user', ctrl.users.postEditUser)
 //logout
 router.get('/logout', ctrl.users.logout)
 

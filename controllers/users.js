@@ -1,6 +1,6 @@
 //user controllers
 
-const { users } = require(".")
+// const { users } = require(".")
 
 //import databases
 //user DB
@@ -64,7 +64,12 @@ const loginUser = (req,res) => {
 //display edit-user.ejs passing userID
 const editUser = (req,res) => {
     if(req.session.loggedIn && req.session.user_id === Number(req.params.user)) {
-        res.render('users/edit-user.ejs')
+        User.findByPk(req.params.user).then(
+            user => {
+                res.render('users/edit-user.ejs', {user: user})  
+            }
+        )
+        // res.render('users/edit-user.ejs')
       } else {
         res.redirect('/') 
       }
@@ -74,6 +79,19 @@ const editUser = (req,res) => {
 //post user edit
 // update changed password.
 //rendier /library/index.ejs passing user.
+const postEditUser = (req,res) => {
+    if(req.session.loggedIn && req.session.user_id === Number(req.params.user)) {
+        console.log("update pw to " + req.body.password)
+        User.update({password: req.body.password}, 
+            {where: {id: req.params.user}, returning: true})
+            .then(
+                res.redirect(`/library/${req.params.user}`)
+            )
+        
+      } else {
+        res.redirect(`/`) 
+      }
+}
 
 //logout
 const logout = (req,res) => {
@@ -87,5 +105,6 @@ module.exports = {
     editUser,
     loginUser,
     createUser,
-    logout
+    logout,
+    postEditUser
 }
