@@ -14,9 +14,10 @@ app.use(session(
   {secret: 'this is SECRET',
   name:'uniqueSessionID',
   saveUninitialized: false,
-  cookie: {secure:false}
+  cookie: {secure:false, maxAge: 900000}
   }
 ))
+
 
 //models here
 
@@ -35,7 +36,13 @@ app.use(express.static('public'))
 
 //default landing reroute.
 app.get('/', (req, res) => {
+  console.log(req.session)
+  if(req.session.loggedIn) {
+    res.redirect(`/library/${req.session.user_id}`)
+} else {
     res.render('users/index.ejs')
+}
+    
 
 })
 
@@ -51,3 +58,9 @@ console.log('Server initialized.')
   //npx sequelize model:generate --name Location --attributes name:string,user_id:integer
   //npx sequelize model:generate --name Imdb --attributes imdbnum:string
 //npx sequelize model:generate --name DVD --attributes name:string,year:integer,location_id:integer,imdb_id:integer
+
+// if(req.session.loggedIn) {
+//   console.log("User logged in.")
+// } else {
+//   console.log("User logged out.")
+// }

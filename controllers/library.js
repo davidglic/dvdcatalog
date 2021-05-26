@@ -25,7 +25,13 @@ const index = (req, res) => {
     //     console.log(user.DVDs[0].name)
     //     res.render('library/index.ejs', { user:user })
     // })
+    if(req.session.loggedIn) {
+        console.log("User logged in.")
+    } else {
+        console.log("User logged out.")
+    }
     console.log(req.session)
+
 
     DVD.findAll({
         where: {

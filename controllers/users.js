@@ -42,6 +42,7 @@ const loginUser = (req,res) => {
             //session info
             req.session.loggedIn = true
             req.session.username = req.body.userID
+            req.session.user_id = result.id
             console.log(req.session)
 
             res.redirect(`/library/${result.id}`)
