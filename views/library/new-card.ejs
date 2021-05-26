@@ -4,7 +4,7 @@
     <%- include('../partials/sidebar') %>
     <main class="main">
         <div class="section-title">New Card</div>
-        <div class="main-content">
+        <div class="main-content moviecard">
             <form action="/library/add/<%= `${user.id}` %>" method="POST">
                 DVD Name:<input type="text" name="name"><br>
                 Year of Release:<input type="text" name="year"><br>
@@ -14,7 +14,7 @@
                         <option value="<%= locations[i].id%>"><%= locations[i].name %></option>
                     <% } %>
                 </select><br>
-                <input type="submit" name="" id="" value="Add">
+                <input type="submit" name="" id="" value="Add" class="myButton">
             </form>
         </div>
     </main>

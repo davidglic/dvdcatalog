@@ -100,8 +100,12 @@ a:hover {
 .cardtext.idnum {
     text-align: center;
 }
-
-
+.poster {
+    padding-left: 10px;
+}
+/* .moviecard {
+    border: solid black 3px;
+} */
 /* card container */
 .cardcontainer {
     display: flex;
@@ -132,6 +136,18 @@ a:hover {
 .error {
     color: red;
     text-align: center;
+}
+
+/* button thanks to */
+.myButton {
+    background-color: #ED254E;
+    font-family:'Special Elite', cursive;
+    border-radius:18px;
+    color: #F4FFFD;
+    font-size:17px;
+    padding: 4px 6px 0px 6px;
+    
+
 }
 /* color schema
 https://coolors.co/ed254e-f9dc5c-f4fffd-011936-465362
