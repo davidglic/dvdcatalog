@@ -23,6 +23,9 @@ const createUser = (req,res) => {
         if (result === null) {
             User.create({name: req.body.name, password: req.body.password}).then(newuser => {
                 Location.create({name: 'Default', user_id: newuser.id}).then( () => {
+                    req.session.loggedIn = true
+                    req.session.username = req.body.name
+                    req.session.user_id = newuser.id
                     res.redirect(`/library/${newuser.id}`)
                 })
             })
