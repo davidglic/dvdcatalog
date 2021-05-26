@@ -8,6 +8,9 @@
 
     <link rel="stylesheet" href="/css/index.css">
 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <header>
@@ -18,16 +21,21 @@
             <input type="submit" name="" id="loginsubmit" value="Login">
         </form>
     </header>
-    <main class="main">
+    <main class="main landing">
 
+        
+
+        <div class="section-title landing">Welcome to DVD Card Catalog!</div>
+        
         <% if (typeof error != 'undefined') { %>
             <div class="error"><%= error %></div>
         <% } %>
 
-        <div class="section-title">Welcome to DVD Card Catalog!</div>
-        <div class="main-content">
+        <div class="main-content landing">
             <h3>Already a User? Log in above.</h3>
-            <div class="intro">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, architecto voluptatem. Totam, quaerat deleniti aspernatur tempora aliquid tenetur repudiandae sequi autem delectus, libero asperiores sed dolorum eum officiis cumque dolor.</div>
+            <div class="intro">The DVD Card Catalog was created with two ideas in mind. First, to demonstrate and exercise my technical skills. Second, I own far to many DVDs to remember and occasionally buy a duplicate. The Catalog is built on an Express framework, a Sequelize database model, and makes use of the OMDB API to load additional information on each record. 
+                <p>If you would like to test it out, you can log in with Username: demo and Password: movietime</p>
+            </div>
             <div>
                 <form action="/users/signup" method="POST" id="signup">
                     <h3>Create a new account.</h3>
@@ -39,9 +47,9 @@
             </div>
         </div>
     </main>
-    <aside class="sidenav">
+    <!-- <aside class="sidenav">
         Navbar here.
-    </aside>
+    </aside> -->
     <footer>
         Footer Here.
     </footer>
