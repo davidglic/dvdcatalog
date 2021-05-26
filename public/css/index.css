@@ -43,7 +43,7 @@ a:hover {
     background-color: #F9DC5C;
     /* width: 800px; */
     height: 639px;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
     
 }
 
@@ -89,6 +89,20 @@ a:hover {
 .cardcontainer {
     display: flex;
     flex-direction: row;
+}
+/* scroll bars */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #F9DC5C;
+}
+::-webkit-scrollbar-thumb {
+    background: #f8d01d;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
 
 /* color schema

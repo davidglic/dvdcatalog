@@ -4,7 +4,7 @@
     <%- include('../partials/sidebar') %>
     <main class="main">
         <div class="section-title">Location Manager</div>
-        <div class="main-content"> 
+        <div class="main-content" style="overflow-y:scroll;"> 
             <% for (i=0; i < locations.length; i++) { %>
                 <form action="/library/loc/<%= `${user.id}/${locations[i].id}` %>?_method=PUT" method="POST">
                     <input type="text" name="name" value="<%= `${locations[i].name}` %>">
