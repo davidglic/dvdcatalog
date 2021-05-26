@@ -38,7 +38,14 @@ const createUser = (req,res) => {
 const loginUser = (req,res) => {
     User.findOne({where: {name: req.body.userID}}).then(result => {
         if (result.password === req.body.password) {
+
+            //session info
+            req.session.loggedIn = true
+            req.session.username = req.body.userID
+            console.log(req.session)
+
             res.redirect(`/library/${result.id}`)
+
         } else {
             console.log("Invalid password.")
             // res.redirect(`back`, {error: "Invalid password."})
@@ -62,9 +69,17 @@ const editUser = (req,res) => {
 // update changed password.
 //rendier /library/index.ejs passing user.
 
+//logout
+const logout = (req,res) => {
+    req.session.destroy((err)=>{})
+    console.log(req.session)
+    res.render("users/index.ejs", {error: "Logged out."})
+}
+
 module.exports = {
     index,
     editUser,
     loginUser,
-    createUser
+    createUser,
+    logout
 }

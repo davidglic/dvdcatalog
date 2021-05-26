@@ -25,6 +25,8 @@ const index = (req, res) => {
     //     console.log(user.DVDs[0].name)
     //     res.render('library/index.ejs', { user:user })
     // })
+    console.log(req.session)
+
     DVD.findAll({
         where: {
             user_id: req.params.user

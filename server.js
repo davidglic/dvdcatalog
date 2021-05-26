@@ -3,22 +3,20 @@
 const express = require('express')
 const app = express()
 
-// // was getting error saying "Error: Cannot find module 'ejs'" 
-// // ejs was installed, tried install/unistall, etc still didn't work.
-// //https://www.codegrepper.com/code-examples/javascript/error+cannot+find+module+%27ejs%27
-// //this copy-pasta fixed???
-// app.set('view engine','ejs'); 
-
-// app.engine('ejs', require('ejs').__express);
-
-// //end copy-pasta
-
 const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({extended:false}))
 
 const methodOverride = require('method-override')
 app.use(methodOverride('_method'))
 
+const session = require('express-session')
+app.use(session(
+  {secret: 'this is SECRET',
+  name:'uniqueSessionID',
+  saveUninitialized: false,
+  cookie: {secure:false}
+  }
+))
 
 //models here
 

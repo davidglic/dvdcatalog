@@ -19,6 +19,8 @@ router.get('/edit/:user', ctrl.users.editUser)
 
 //.post /user/edit post edited user
 
+//logout
+router.get('/logout', ctrl.users.logout)
 
 //export
 
