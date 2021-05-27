@@ -19,6 +19,7 @@ I own too many DVD's to remember what I actually own or don't own. This project 
 - Delete location and update DVDs to new valid location with one button.
 - Styling for mobile use.
 - Search feature.
+- Data validation built into html forms.
 
 ## Technology Used
 
