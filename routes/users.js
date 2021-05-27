@@ -1,10 +1,13 @@
 //import express
 const express = require('express')
 const router = express.Router()
-const ctrl = require('../controllers')
+
 //import controllers
+const ctrl = require('../controllers')
+
 
 //routes
+
 //.get landing index includes sign up form and log in
 router.get('/', ctrl.users.index)
 
@@ -19,6 +22,7 @@ router.get('/edit/:user', ctrl.users.editUser)
 
 //.post /user/edit post edited user
 router.post('/edit/:user', ctrl.users.postEditUser)
+
 //logout
 router.get('/logout', ctrl.users.logout)
 
