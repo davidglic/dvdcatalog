@@ -75,6 +75,11 @@ IMDBs table stores the IMDB ID# as imdbnum.
 - sequelize
 - sequelize-cli
 
+### Required software
+    
+    - Node.js
+    - postgres
+
 ### Instructions
 
 In console run:
