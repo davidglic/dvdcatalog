@@ -1,7 +1,7 @@
 # dvdcatalog
 ## DVD Library Card Catalog
 
-I own too many DVD's to remember what I actually own or don't own. This project simulates a library card catalog so I can check on the go. It also records where I store my indivdual DVDs so I know were to look for them. It is powered by a persistent SQL database and an Express framework. OMDb API allows for addtional movie details to be loaded without having to enter into database.
+I own too many DVD's to remember what I actually own or don't own. This project simulates a library card catalog so I can check on the go. It also records where I store my individual DVDs so I know were to look for them. It is powered by a persistent SQL database and an Express framework. OMDb API allows for addtional movie details to be loaded without having to enter into database.
 
 ## Features
 
@@ -36,7 +36,7 @@ These sources were a great help in this project.
 - <a href="https://medium.com/weekly-webtips/how-to-create-a-simple-login-functionality-in-express-5274c44c20df">https://medium.com/weekly-webtips/how-to-create-a-simple-login-functionality-in-express-5274c44c20df</a>
 - <a href="https://www.omdbapi.com/">OMDb API</a>
 
-# Wireframes and Models
+## Images
 
 #### 70s Typewriter<br/>
 ![Typewriter](https://raw.githubusercontent.com/davidglic/dvdcatalog/main/images/yellowtypewriter.png)<br/>
