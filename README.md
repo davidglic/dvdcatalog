@@ -40,7 +40,7 @@ These sources were a great help in this project.
 
 #### 70s Typewriter<br/>
 ![Typewriter](https://raw.githubusercontent.com/davidglic/dvdcatalog/main/images/yellowtypewriter.png)<br/>
-Theme was inspired by sleek, colorful, and modern designs from the 70s: like this typewriter.
+Theme was inspired by sleek, colorful, and modern designs from the 70s: like this typewriter. The font is modeled after the Smith Corona Special Elite Type No NR6 typewriters.
 
 #### List Page<br/>
 ![list page](https://raw.githubusercontent.com/davidglic/dvdcatalog/main/images/index%20screenshot.png)
