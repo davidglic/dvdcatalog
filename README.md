@@ -43,26 +43,28 @@ https://medium.com/weekly-webtips/how-to-create-a-simple-login-functionality-in-
 
 # Wireframes and Models
 
-Landing Page<br/>
-![landing page](https://user-images.githubusercontent.com/82845270/119192428-01bb0980-ba35-11eb-9f45-7b7c1c2a0a46.png)
+70s Typewriter<br/>
+![Typewriter](https://raw.githubusercontent.com/davidglic/dvdcatalog/main/images/yellowtypewriter.png)
+Theme was inspired by sleek, colorful, and modern designs from the 70s like this typewriter.
 
 List Page<br/>
-![list page](https://user-images.githubusercontent.com/82845270/119192442-067fbd80-ba35-11eb-9098-9d1ca1f7ee79.png)
+![list page](https://raw.githubusercontent.com/davidglic/dvdcatalog/main/images/index%20screenshot.png)
+Main index page loaded after login shows entire library.
+
+Sorted List Page<br/>
+![landing page](https://raw.githubusercontent.com/davidglic/dvdcatalog/main/images/sorted%20index%20screen.png)
+After clicking a letter on the navigation bar, an index of the select letter displays.
 
 Card Page<br/>
-![card page](https://user-images.githubusercontent.com/82845270/119192450-097aae00-ba35-11eb-921b-65d92555e63f.png)
-
-New/Edit/Delete Page<br/>
-![new and edit page](https://user-images.githubusercontent.com/82845270/119192455-0c759e80-ba35-11eb-9c7c-f484e70e0e3a.png)
-
-Storage Locations Page<br/>
-![location list page](https://user-images.githubusercontent.com/82845270/119192475-13041600-ba35-11eb-9f50-8f803e79d67d.png)
+![card page](https://raw.githubusercontent.com/davidglic/dvdcatalog/main/images/cardscreenshot.png)
+After clicking a record on an index a details card is loaded. Information including director, writer, genre, actors, plot and movie poster are loaded from OMDB API.
 
 Database Model<br/>
-![database model](https://user-images.githubusercontent.com/82845270/119193636-bf92c780-ba36-11eb-9c27-27537f9367f7.png)
+![database model](https://raw.githubusercontent.com/davidglic/dvdcatalog/main/images/sorted%20index%20screen.png)
 
 Users Table stores username and password.
 Locations Table stores name and Usersid to keep track of both who owns a DVD and where it is stored.
 DVDs table stores name of DVD,  Location ID to assign owner, and IMDB reference ID for additional data.
 IMDBs table stores the IMDB ID# as imdbnum.
 
+# Installation
