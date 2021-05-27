@@ -1,7 +1,7 @@
 # dvdcatalog
 ## DVD Library Card Catalog
 
-I own too many DVD's to remember what I actually own or don't own. This project simulates a library card catalog so I can check on the go. It also records where I store my indivdual DVDs so I know were to look for them. It is powered by a persistent SQL database and an Express framework. OMDb API allows for addtional movie details to be loaded without haveing to enter into database.
+I own too many DVD's to remember what I actually own or don't own. This project simulates a library card catalog so I can check on the go. It also records where I store my indivdual DVDs so I know were to look for them. It is powered by a persistent SQL database and an Express framework. OMDb API allows for addtional movie details to be loaded without having to enter into database.
 
 ## Features
 
@@ -40,7 +40,7 @@ These sources were a great help in this project.
 
 #### 70s Typewriter<br/>
 ![Typewriter](https://raw.githubusercontent.com/davidglic/dvdcatalog/main/images/yellowtypewriter.png)<br/>
-Theme was inspired by sleek, colorful, and modern designs from the 70s like this typewriter.
+Theme was inspired by sleek, colorful, and modern designs from the 70s: like this typewriter.
 
 #### List Page<br/>
 ![list page](https://raw.githubusercontent.com/davidglic/dvdcatalog/main/images/index%20screenshot.png)
@@ -78,8 +78,8 @@ IMDBs table stores the IMDB ID# as imdbnum.
 
 ### Required software
     
-    - Node.js
-    - postgres
+- Node.js
+- postgres
 
 ### Instructions
 
