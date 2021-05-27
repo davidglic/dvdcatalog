@@ -10,11 +10,13 @@ const { Op } = require("sequelize")
 
 //apikey here!
 const apiKey = "4d820502"
+
+//import fetch
 const fetch = require('node-fetch')
 
 //main index
 //query all dvds in library alphabetically and pass to index.ejs to list on screen
-//fed /:user
+//pass dvdlist and user info.
 const index = (req, res) => {
 
     if(req.session.loggedIn && req.session.user_id === Number(req.params.user)) {
@@ -34,9 +36,7 @@ const index = (req, res) => {
                 attributes: ['id', 'imdbnum']
                 }
             ]
-            
             }).then(dvdList => {
-                // console.log(dvdList[0].User.name + dvdList[0].Location.name + dvdList[0].Imdb.imdbnum)
                 console.log(dvdList[0].Imdb.imdbnum)
                 res.render('library/index.ejs', { dvdList: dvdList, user: dvdList[0].User })
             }
@@ -46,38 +46,10 @@ const index = (req, res) => {
     } else {
         res.redirect('/') 
     }
-   
-
-
-    // DVD.findAll({
-    //     where: {
-    //         user_id: req.params.user
-    //         },
-    //         order: [['name', 'ASC']],
-    //     include: [
-    //         {model: User,
-    //         attributes: ['id', 'name']
-    //         },
-    //         {model: Location,
-    //         attributes: ['id', 'name']
-    //         },
-    //         {model: Imdb,
-    //         attributes: ['id', 'imdbnum']
-    //         }
-    //     ]
-        
-    //     }).then(dvdList => {
-    //         // console.log(dvdList[0].User.name + dvdList[0].Location.name + dvdList[0].Imdb.imdbnum)
-    //         console.log(dvdList[0].Imdb.imdbnum)
-    //         res.render('library/index.ejs', { dvdList: dvdList, user: dvdList[0].User })
-    //     }
-    //     ).catch( () => {
-    //         res.redirect(`/library/add/${req.params.user}`)
-    //     })
-    // res.render('library/index.ejs')
 }
 
-//query all dvds that start with <letter> and pass to index.ejs to list on screen
+//Sorted Index
+//query all dvds that start with <letter> and pass dvdList and User info to index.ejs to list on screen
 const sorted = (req, res) => {
     if(req.session.loggedIn && req.session.user_id === Number(req.params.user)) {
         DVD.findAll({
@@ -110,7 +82,7 @@ const sorted = (req, res) => {
 }
 
 //dvd card display
-//query data based on dvd id and pass id, name, location info, and imdbid# to card.ejs to display single dvd info--fetch api info here????
+//query data based on dvd id and pass id, name, location info, and imdbid# to card.ejs to display single dvd info?
 //'/dvd/:user/:dvd' is the route
 const displayCard = (req, res) => {
     if(req.session.loggedIn && req.session.user_id === Number(req.params.user)) {
@@ -123,6 +95,8 @@ const displayCard = (req, res) => {
     
             ]
         }).then(movieresult => {
+            
+            //api request
             fetch(`http://www.omdbapi.com/?i=${movieresult.Imdb.imdbnum}&apikey=${apiKey}`)
             .then(apiResponse => apiResponse.json())
             .then(apiInfo => {
@@ -136,32 +110,10 @@ const displayCard = (req, res) => {
       } else {
         res.redirect('/') 
       }
-
-
-    // DVD.findByPk(req.params.dvd, {
-    //     include: [
-    //         {model: Imdb,
-    //         attributes: ['id', 'imdbnum']},
-    //         {model: Location,
-    //         attributes: ['id','name']}
-
-    //     ]
-    // }).then(movieresult => {
-    //     fetch(`http://www.omdbapi.com/?i=${movieresult.Imdb.imdbnum}&apikey=${apiKey}`)
-    //     .then(apiResponse => apiResponse.json())
-    //     .then(apiInfo => {
-    //         User.findByPk(req.params.user).then(user => {
-    //             console.log(apiInfo)
-    //             res.render('library/card.ejs', {user: user, movie: movieresult, apiInfo: apiInfo})
-    //         })
-    //     })
-
-    // })
-    // res.render('library/card.ejs')
 }
 
 //dvd card edit display
-//query and pass dvd and location info to edit-card.ejs
+//query and pass user, dvd, and location info to edit-card.ejs
 const displayEditCard = (req, res) => {
 
     if(req.session.loggedIn && req.session.user_id === Number(req.params.user)) {
@@ -180,7 +132,6 @@ const displayEditCard = (req, res) => {
                 }
                     
                 )
-    
             })
         })
       } else {
@@ -227,38 +178,6 @@ const postEditCard = (req, res) => {
       } else {
         res.redirect('/') 
       }
-
-    // Imdb.findOne({where: {imdbnum: req.body.imdbnum}}).then(idExists => {
-    //     if (idExists === null) {
-    //         Imdb.create({imdbnum: req.body.imdbnum}).then( () => {
-    //             Imdb.findOne({where: {imdbnum: req.body.imdbnum}}).then(result => {
-    //                 const updatedDVD = {
-    //                     name: req.body.name,
-    //                     year: req.body.year,
-    //                     location_id: req.body.location_id,
-    //                     imdb_id: result.id,
-    //                     user_id: req.params.user
-    //                 }
-    //                 DVD.update(updatedDVD, {where: {id: req.params.dvd}, returning: true}).then( () => {
-    //                     res.redirect(`/library/${req.params.user}`)
-    //                 })
-    //             })
-    //         })
-    //     } else {
-    //         Imdb.findOne({where: {imdbnum: req.body.imdbnum}}).then(result => {
-    //             const updatedDVD = {
-    //                 name: req.body.name,
-    //                 year: req.body.year,
-    //                 location_id: req.body.location_id,
-    //                 imdb_id: result.id,
-    //                 user_id: req.params.user
-    //             }
-    //             DVD.update(updatedDVD, {where: {id: req.params.dvd}, returning: true}).then( () => {
-    //                 res.redirect(`/library/${req.params.user}`)
-    //             })
-    //         })
-    //     }
-    // })
 }
 
 //post dvd delete
@@ -272,10 +191,6 @@ const deleteCard = (req, res) => {
       } else {
         res.redirect('/') 
       }
-
-    // DVD.destroy({where: {id: req.params.dvd}}).then( () => {
-    //     res.redirect(`/library/${req.params.user}`)
-    // })
 }
 
 //new card display
@@ -291,17 +206,10 @@ const displayNewCard = (req, res) => {
       } else {
         res.redirect('/') 
       }
-    // User.findByPk(req.params.user).then(user => {
-    //     Location.findAll({where: {user_id: req.params.user}}).then( locations => {
-    //         res.render('library/new-card.ejs', {user:user, locations: locations})}
-    //     )
-        
-    // })
-    
 }
 
 //post new card
-// udpate dvd and IMDB db with new card and load card.ejs with new card.
+// udpate dvd and IMDB db with new card and redirect to index
 // is passed name, year, imdbID, and location ID
 const postNewCard = (req, res) => {
 
@@ -341,47 +249,13 @@ const postNewCard = (req, res) => {
         }) 
       } else {
         res.redirect('/') 
-      }
-
-    // Imdb.findOne({where: {imdbnum: req.body.imdbnum}}).then(idExists => {  
-    //     if (idExists === null) {
-    //         console.log('false!')
-    //         Imdb.create({imdbnum: req.body.imdbnum}).then( () => {
-    //                 Imdb.findOne({where: {imdbnum: req.body.imdbnum}}).then(result => {
-    //                     const newDVD = {
-    //                         name: req.body.name,
-    //                         year: req.body.year,
-    //                         location_id: req.body.location_id,
-    //                         imdb_id: result.id,
-    //                         user_id: req.params.user
-    //                     }  
-    //                     DVD.create(newDVD).then( () => {
-    //                         res.redirect(`/library/${req.params.user}`)
-    //                     })
-    //                 })
-                
-    //         })
-    //     } else {
-    //         Imdb.findOne({where: {imdbnum: req.body.imdbnum}}).then(result => {
-    //             const newDVD = {
-    //                 name: req.body.name,
-    //                 year: req.body.year,
-    //                 location_id: req.body.location_id,
-    //                 imdb_id: result.id,
-    //                 user_id: req.params.user
-    //             } 
-    //             DVD.create(newDVD).then( () => {
-    //                 res.redirect(`/library/${req.params.user}`)
-    //             }) 
-    //         })
-    //     }
-    // })    
+      }  
 }
 
 
 
 //display locations
-// query location db by user id and pass list to locations.ejs
+// query location db by user id and pass list of locations and user to locations.ejs
 const displayLocations = (req, res) => {
 
     if(req.session.loggedIn && req.session.user_id === Number(req.params.user)) {
@@ -393,12 +267,6 @@ const displayLocations = (req, res) => {
       } else {
         res.redirect('/') 
       }
-
-    // User.findByPk(req.params.user).then(user => {
-    //     Location.findAll({where: {user_id: req.params.user}}).then( locations => {
-    //         res.render('library/locations.ejs', {user: user, locations: locations}) 
-    //     })
-    // })
 }
 
 //post location
@@ -409,7 +277,6 @@ const addLocation = (req, res) => {
         Location.create({name: req.body.name, user_id: req.params.user}).then(
             Location.findAll({where: {user_id: req.params.user}}).then(locations => {
                 User.findByPk(req.params.user).then(user => {
-                // res.render('library/locations.ejs', {user: user, locations: locations})
                 res.redirect('back')
                 })
             })
@@ -417,16 +284,6 @@ const addLocation = (req, res) => {
       } else {
         res.redirect('/') 
       }
-
-        // Location.create({name: req.body.name, user_id: req.params.user}).then(
-        //     Location.findAll({where: {user_id: req.params.user}}).then(locations => {
-        //         User.findByPk(req.params.user).then(user => {
-        //         // res.render('library/locations.ejs', {user: user, locations: locations})
-        //         res.redirect('back')
-        //         })
-        //     })
-        // )
-    
 }
 
 //update locatoin
@@ -444,18 +301,11 @@ const updateLocation = (req, res) => {
       } else {
         res.redirect('/') 
       }
-
-    // Location.update(req.body, {where: {id: req.params.loc}}).then( () => {
-    //     User.findByPk(req.params.user).then(user => {
-    //         Location.findAll({where: {user_id: req.params.user}}).then( locations => {
-    //             res.render('library/locations.ejs', {user: user, locations: locations}) 
-    //         })
-    //     })
-    // })
 }
 
 //delete location
 // delete db loctation and reloade locations.ejs
+//--to be implented later-- location is apparenty an awkward linchpin in many operations.
 
 
 module.exports = {
