@@ -64,4 +64,31 @@ IMDBs table stores the IMDB ID# as imdbnum.
 ## Installation
 
 ### Required Packages
+    
+- body-parser
+- ejs
+- express
+- express-session
+- method-override
+- node-fetch
+- pg
+- sequelize
+- sequelize-cli
 
+### Instructions
+
+In console run:
+```
+    npm init
+    npm install
+    npx sequelize init
+    npx sequelize db:migrate
+    npx sequelize db:seed:all
+
+```
+Update library.js line 12 with your OMDb API key.
+
+Server can be run with:
+```
+node server.js
+```
