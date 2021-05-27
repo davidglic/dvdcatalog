@@ -4,7 +4,7 @@
     <%- include('../partials/sidebar') %>
     <main class="main">
         <div class="section-title">New Card</div>
-        <div class="main-content moviecard">
+        <div class="main-content">
             <form action="/library/add/<%= `${user.id}` %>" method="POST">
                 DVD Name:<input type="text" name="name"><br>
                 Year of Release:<input type="text" name="year"><br>
@@ -16,6 +16,10 @@
                 </select><br>
                 <input type="submit" name="" id="" value="Add" class="myButton">
             </form>
+            <div>
+                <p>IMDB ID# is required to pull additional movie info. It can be obtained from <a href="https://www.imdb.com/" target="_blank">www.IMDB.com</a> URL. <br>
+                For example in https://www.imdb.com/title/tt4189022/, tt4189022 is the ID#. </p>
+            </div>
         </div>
     </main>
     
