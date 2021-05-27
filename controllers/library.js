@@ -37,7 +37,6 @@ const index = (req, res) => {
                 }
             ]
             }).then(dvdList => {
-                console.log(dvdList[0].Imdb.imdbnum)
                 res.render('library/index.ejs', { dvdList: dvdList, user: dvdList[0].User })
             }
             ).catch( () => {
@@ -69,7 +68,6 @@ const sorted = (req, res) => {
                 }
             ]
             }).then(dvdList => {
-                console.log(dvdList)
                 res.render('library/sorted.ejs', { dvdList: dvdList, user: dvdList[0].User })
             }
             ).catch( () => {
@@ -101,7 +99,6 @@ const displayCard = (req, res) => {
             .then(apiResponse => apiResponse.json())
             .then(apiInfo => {
                 User.findByPk(req.params.user).then(user => {
-                    console.log(apiInfo)
                     res.render('library/card.ejs', {user: user, movie: movieresult, apiInfo: apiInfo})
                 })
             })
@@ -216,7 +213,6 @@ const postNewCard = (req, res) => {
     if(req.session.loggedIn && req.session.user_id === Number(req.params.user)) {
         Imdb.findOne({where: {imdbnum: req.body.imdbnum}}).then(idExists => {  
             if (idExists === null) {
-                console.log('false!')
                 Imdb.create({imdbnum: req.body.imdbnum}).then( () => {
                         Imdb.findOne({where: {imdbnum: req.body.imdbnum}}).then(result => {
                             const newDVD = {
